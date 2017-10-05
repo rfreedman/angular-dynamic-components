@@ -10,10 +10,11 @@ import {JsonPipe} from '@angular/common';
   template: `
     <div style="text-align:center">
       <h2>Dynamic Components</h2>
-      <div #container></div>
+      <div #container style="display:flex;  align-items: flex-start;flex-wrap: wrap;height: 100%;"></div>
     </div>
   `,
-  styles: []
+  styles: [
+  ]
 })
 export class AppComponent implements OnInit {
   @ViewChild('container', { read: ViewContainerRef }) container: ViewContainerRef;
