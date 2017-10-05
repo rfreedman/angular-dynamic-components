@@ -42,6 +42,26 @@ export class AppComponent implements OnInit {
       'id': 4,
       'text': 'fourth component, green',
       'type': 'green'
+    },
+    {
+      'id': 5,
+      'text': 'fith component, blue',
+      'type': 'blue'
+    },
+    {
+      'id': 6,
+      'text': 'sixth component, green',
+      'type': 'green'
+    },
+    {
+      'id': 7,
+      'text': 'seventh component, red',
+      'type': 'red'
+    },
+    {
+      'id': 8,
+      'text': 'eighth component, green',
+      'type': 'green'
     }
   ];
 
