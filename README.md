@@ -1,4 +1,4 @@
-# Example of dynamic Component creation in Angular 4+ (in this case, 4.4.4)
+# Example of dynamic Component creation in Angular 4+ 
 
 The important bits are:
  1. Register your dynamic components in the 'entryComponents' section of your module
