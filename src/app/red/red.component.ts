@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ComponentRef, Input, OnInit} from '@angular/core';
 import {PortalComponent} from '../portal/portal.component';
 
 @Component({
@@ -7,7 +7,8 @@ import {PortalComponent} from '../portal/portal.component';
   styleUrls: ['./red.component.css']
 })
 export class RedComponent implements PortalComponent, OnInit {
-  @Input() config: any;
+  config: any;
+  componentRef: ComponentRef<PortalComponent>;
 
   constructor() {
   }
@@ -15,4 +16,7 @@ export class RedComponent implements PortalComponent, OnInit {
   ngOnInit() {
   }
 
+  public remove() {
+    this.componentRef.destroy();
+  }
 }

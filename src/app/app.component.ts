@@ -10,6 +10,11 @@ import {JsonPipe} from '@angular/common';
   template: `
     <div style="text-align:center">
       <h2>Dynamic Components</h2>
+      <div>
+        <button (click)="add('red')">Add Red</button>
+        <button (click)="add('green')">Add Green</button>
+        <button (click)="add('blue')">Add Blue</button>
+      </div>
       <div #container style="display:flex;  align-items: flex-start;flex-wrap: wrap;height: 100%;"></div>
     </div>
   `,
@@ -65,6 +70,8 @@ export class AppComponent implements OnInit {
     }
   ];
 
+  lastIndex = 8;
+
   constructor(private factoryResolver: ComponentFactoryResolver) {
   }
 
@@ -80,11 +87,22 @@ export class AppComponent implements OnInit {
     );
   }
 
+  public add(color: string) {
+    const config = {
+      'id': ++this.lastIndex,
+      'text': 'dynamically added',
+      'type': color
+    };
+    const componentType = this.componentType(config);
+    this.loadComponent(componentType, config);
+  }
+
   private loadComponent(type: Type<PortalComponent>, config: any): void {
     const componentFactory = this.factoryResolver.resolveComponentFactory(type);
     const componentRef = this.container.createComponent(componentFactory);
     const inst = (<PortalComponent>componentRef.instance);
     inst.config = config;
+    inst.componentRef = componentRef;
   }
 
   private componentType(config) {
