@@ -3,6 +3,7 @@ import {RedComponent} from './red/red.component';
 import {GreenComponent} from './green/green.component';
 import {BlueComponent} from './blue/blue.component';
 import {PortalComponent} from './portal/portal.component';
+import {JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +30,9 @@ export class AppComponent implements OnInit {
       'type': 'green'
     },
     {
+      type: 'unknown'
+    },
+    {
       'id': 3,
       'text': 'third component, red',
       'type': 'red'
@@ -44,8 +48,14 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.configs.forEach(config =>
-      this.loadComponent(this.componentType(config), config)
+    this.configs.forEach(config => {
+        const componentType = this.componentType(config);
+        if (componentType) {
+          this.loadComponent(componentType, config);
+        } else {
+            console.error(`could not find component for config: ${new JsonPipe().transform(config)}`);
+        }
+      }
     );
   }
 
@@ -56,7 +66,7 @@ export class AppComponent implements OnInit {
     inst.config = config;
   }
 
-  public componentType(config) {
+  private componentType(config) {
     if (config.type === 'red') {
       return RedComponent;
     }
