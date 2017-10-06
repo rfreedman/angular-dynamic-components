@@ -1,6 +1,6 @@
 # Example of dynamic Component creation in Angular 4+ 
 
-## Demo at https://rfreedman.github.io/angular-dynamic-components/
+#### Demo at https://rfreedman.github.io/angular-dynamic-components/
 
 The important bits are:
  1. Register your dynamic components in the 'entryComponents' section of your module
